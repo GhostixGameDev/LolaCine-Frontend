@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/Roboto/Roboto-Regular.ttf") format(truetype);
+}
+* {
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+html{
+    width: 100vw;
+    height: 100vh;
+    scroll-behavior: smooth;
+} 
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden
+}
+.container{
+    margin: 0;
+    padding: 0px;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: #341c18;
+    display: flex;
+    flex-direction: column;
+}
+.banner{
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+}
+.vote-grid{
+    margin-top: 5%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10%;
+    row-gap: 10px;
+    justify-content: center;
+    align-self: center;
+}
+.movie{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    overflow-x: visible;
+}
+.movie .content{
+    width: 30vw;
+    height: 20vh;
+    border: solid 10px black;
+    text-align: center;
+    align-content: center;
+    font-family: "Roboto";
+    font-size: 3vh;
+    font-weight: 800;
+}
+button{
+    background: rgba(0, 0, 0, 0.17);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.5px);
+    -webkit-backdrop-filter: blur(9.5px);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    align-self: center;
+    transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    width: 100%;
+    height: 20%;
+    font-family: "Roboto";
+    font-weight: 500;
+}
+button:hover{
+    cursor: pointer;
+}
+button:active{
+    transform: scale(0.98); 
+}
+
+@media (max-width: 768px){
+    .banner{
+        width: 100%;
+        height: 30vh;
+    }
+    .vote-grid{
+        width: 100%;
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+    .movie{
+        row-gap: 10px;
+    }
+    .movie .content{
+        width: 40vw;
+        height: 20vh;
+    }
+}
