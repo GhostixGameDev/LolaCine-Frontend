@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import banner from './assets/images/banner.png';
 
+
+function areCookiesEnabled() {
+  document.cookie = "testcookie=1";
+  const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
+  document.cookie = "testcookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  return cookiesEnabled;
+}
+
 function App() {
   const [movies, setMovies] = useState([]);
 
@@ -18,8 +26,17 @@ function App() {
   }, []);
 
   const handleVote = (id) => {
+    if(!areCookiesEnabled()){ 
+      //Display error message if cookies not enabled.
+      alert("Debes tener las cookies habilitadas para votar. Tampoco puedes votar en incognito, chicx listx!")
+      return;}
+    const localVoted = localStorage.getItem("voted");
+    if (localVoted){
+      alert("No puedes votar dos veces!");
+      return;
+    }
     //Adds one vote for the specified id.
-    fetch(`http://localhost:3304/votes/${id}`, { method: 'POST' })
+    fetch(`http://localhost:3304/votes/${id}`, { method: 'POST', credentials: 'include'})
       .then(response => {
         if (!response.ok) {
           throw new Error('ERROR: Failed to fetch, response was not OK');
@@ -27,12 +44,19 @@ function App() {
         return response.json();
       })
       .then(data => {
-        console.log(data.message);
-        //Refresh the data.
-        fetch('http://localhost:3304/proposals')
-          .then(response => response.json())
-          .then(data => setMovies(data))
-          .catch(error => console.error('Error re-fetching proposals: ', error));
+        if(data.error){
+          console.error(data.error);
+        }else{
+          console.log(data.message);
+          localStorage.setItem("voted", "true");
+          alert("Voto emitido con exito!");
+          //Refresh the data.
+          fetch('http://localhost:3304/proposals')
+            .then(response => response.json())
+            .then(data => setMovies(data))
+            .catch(error => console.error('Error re-fetching proposals: ', error));
+        }
+        
       })
       .catch(error => console.error('Error sending votes: ', error));
   };
