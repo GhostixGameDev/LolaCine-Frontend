@@ -5,7 +5,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "votos"
+    database: "lolacine"
   });
   
   db.connect(function(error) {
@@ -23,7 +23,7 @@ const db = mysql.createConnection({
      `CREATE TABLE IF NOT EXISTS \`admins\` 
     (ID tinyint AUTO_INCREMENT PRIMARY KEY, 
     username tinytext NOT NULL, 
-    password tinytext NOT NULL)`];
+    password tinytext NOT NULL)`, "INSERT INTO votos (name, logo) VALUES ('Example 1', '')", "INSERT INTO votos (name, logo) VALUES ('Example 2', '')", "INSERT INTO votos (name, logo) VALUES ('Example 3', '')", "INSERT INTO votos (name, logo) VALUES ('Example 4', '')"];
     //Query to the database
     setupQueries.forEach(function(query){
       db.query(query, function (err) {
