@@ -16,29 +16,6 @@ app.use(cors({
 }));
 app.use(cookieParser())
 
-//Functions
-function hasUserVoted(ip){
-  return new Promise((resolve, reject) => {
-    db.query("SELECT ip FROM users WHERE IP = ?", [ip], (error, result) => {
-      if (error) {
-        console.log(error);
-        return reject(error);
-      }
-      if (result.length > 0) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    });
-  });
-}
-function logUserVote(ip){
-  db.query("INSERT INTO users (ip) VALUES (?)", [ip], (insertError) => {
-    if (insertError) console.log(insertError);
-    console.log("Logged vote from: " + ip)
-  });
-}
-
 
 //Routes setup for the users page functions
 //============================================================================
@@ -61,9 +38,8 @@ app.get('/votes/:id', (request, response) => {
 app.post('/votes/:id', async (request, response) => {
   const { id } = request.params;
   const cookieValue = request.cookies.hasVoted;
-  const userIP = request.ip;
   try{
-    const hasVoted = cookieValue || await hasUserVoted(userIP);
+    const hasVoted = cookieValue;
     if (hasVoted) {
       return response.status(403).json({error: "You can only vote once."});
     }
@@ -76,7 +52,7 @@ app.post('/votes/:id', async (request, response) => {
           if (updateError) return response.status(500).json({ error: updateError.message });
           
           response.cookie("hasVoted", true, {maxAge: 24 * 60 * 60 * 1000, httpOnly: true}); //Flag. This cookie expires after 24 hours.
-          logUserVote(userIP); //Log the user ip into the database.
+          //logUserVote(userIP); //Log the user ip into the database.
           response.json({ message: `Updated votes for ID ${id} to ${newVotes}` });
         });
       } else {
