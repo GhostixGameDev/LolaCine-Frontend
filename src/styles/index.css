@@ -10,6 +10,7 @@ html{
     width: 100vw;
     height: 100vh;
     scroll-behavior: smooth;
+    background-color: #eae287
 } 
 body{
     margin: 0px;
@@ -23,7 +24,6 @@ body{
     padding: 0px;
     width: 100vw;
     overflow-x: hidden;
-    background-color: #341c18;
     display: flex;
     flex-direction: column;
 }
@@ -64,9 +64,9 @@ body{
     font-weight: 800;
 }
 button{
-    background: rgba(0, 0, 0, 0.17);
+    background: rgba(93,157,41, 0.336);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(93,157,41, 0.1);
     backdrop-filter: blur(9.5px);
     -webkit-backdrop-filter: blur(9.5px);
     border: 1px solid rgba(0, 0, 0, 0.12);
