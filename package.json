@@ -18,6 +18,7 @@
     "express": "^4.19.2",
     "firebase": "^10.13.1",
     "firebase-admin": "^12.4.0",
+    "firebase-tools": "^13.17.0",
     "jwks-rsa": "^3.1.0",
     "lolacine": "file:",
     "mysql": "^2.18.1",

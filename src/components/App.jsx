@@ -18,7 +18,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
-
+  const server = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
@@ -37,7 +37,7 @@ function App() {
     try {
       // Fetches all the proposals from the server
       const token = await currentUser.getIdToken();
-      const response = await fetch('http://localhost:3304/proposals', {
+      const response = await fetch(`${server}/proposals`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +56,7 @@ function App() {
   const checkUserVoteStatus = async (currentUser) => {
     try {
       const token = await currentUser.getIdToken();
-      const response = await fetch(`http://localhost:3304/user-vote-status`, {
+      const response = await fetch(`${server}/user-vote-status`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -104,7 +104,7 @@ function App() {
     // Adds one vote for the specified id.
     try{
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:3304/votes/${id}`, {
+      const response = await fetch(`${server}/votes/${id}`, {
         method: "POST",
         credentials: "include",
         headers: {
