@@ -3,7 +3,8 @@ import { auth } from '../firebase';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import LoadingScreen from './Loading';
 import banner from '../assets/images/banner.webp';
-
+import googleIcon from "../assets/images/google.svg";
+import logo from "../assets/images/logo.png";
 
 function areCookiesEnabled() {
   document.cookie = "testcookie=1";
@@ -141,8 +142,14 @@ function App() {
       {!user ? (
         //If not authenticated not show page contents
         <div>
-          <h2>Inicia sesión para poder votar.</h2>
-          <button onClick={handleLogin}>Iniciar sesión con Google</button>
+          <div className='login-form'>
+            <div className='logo-container'><img src={logo} alt='Lola Cine Logo'></img></div>
+            <h1>Inicia Sesión</h1>
+            <button className='signin' onClick={handleLogin}>
+              <div className='logo-container'><img src={googleIcon} alt='Google icon'></img></div>
+              <span className='login-button-text'>Iniciar sesión con Google</span>
+            </button>
+          </div>
         </div>
       ) : (
         //If authenticated render all the page

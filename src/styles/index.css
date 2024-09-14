@@ -83,7 +83,81 @@ button:hover{
 button:active{
     transform: scale(0.98); 
 }
-
+.login-form{
+    opacity:1;
+    top:20px;
+    transform-origin:161px 100%;
+    transform:rotateX(0deg);
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:30vw;
+    border-top: 4px solid rgba(93, 157, 41, 0.616);
+    height:60vh;
+    position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    top:0;
+    bottom:0;
+    padding: 0 40px 40px 40px;
+    backdrop-filter: blur(9.5px);
+    box-shadow: 0 4px 30px rgba(93, 157, 41, 0.562);
+    border-radius: 2%;
+    background: linear-gradient(45deg,  rgba(34, 34, 28, 0.123) 0%,rgba(93, 157, 41, 0.158) 100%); 
+    background: -moz-linear-gradient(45deg,  rgba(34, 34, 28, 0.123) 0%,rgba(93, 157, 41, 0.158) 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(45deg,  rgba(34, 34, 28, 0.123) 0%,rgba(93, 157, 41, 0.158) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  rgba(34, 34, 28, 0.123) 0%,rgba(93, 157, 41, 0.158) 100%); /* Opera 11.10+ */
+    background: linear-gradient(45deg,  rgba(34, 34, 28, 0.123) 0%,rgba(93, 157, 41, 0.158) 100%); /* W3C */
+}
+.login-form h1{
+    font-family: "Roboto";
+    font-size: 150%;
+    font-weight: 500;
+}
+.login-form .logo-container{
+    width: 90%;
+    height: 50%;
+    overflow: hidden;
+}
+.login-form .logo-container img{
+    width: 100%;
+    height: 100%;
+}
+.signin{
+    display: flex;
+    width: 90%;
+    height: 11%;
+    border-radius: 30px;
+    overflow: hidden;
+    align-items: center;
+    text-align: left;
+    font-size: 104%;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border: solid 4px rgba(246, 255, 122, 0.836);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.397);
+}
+.login-button-text{
+    font-family: "Roboto";
+    font-weight: 400;
+}
+.signin .logo-container{
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+}
+.signin img{
+    width: 100%;
+    height: 100%;
+}
+@media (max-width: 1075px){
+    .login-form{
+        width: 60vw;
+        height: 70vh;
+    }
+}
 @media (max-width: 768px){
     .banner{
         width: 100%;
@@ -100,5 +174,9 @@ button:active{
     .movie .content{
         width: 40vw;
         height: 20vh;
+    }
+    .login-form{
+        width: 90vw;
+        height: 80vh;
     }
 }
