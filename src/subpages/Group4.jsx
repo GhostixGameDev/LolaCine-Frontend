@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')).render(
         audience: "https://ghostix.us.auth0.com/api/v2/",
       }}
     >
-      <App />
+      <App group={0}/>
     </Auth0Provider>
   </StrictMode>,
 )

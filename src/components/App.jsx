@@ -15,7 +15,7 @@ function areCookiesEnabled() {
 }
 //=============================
   //Component
-function App({group = 0}) {
+function App({group = 1}) {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

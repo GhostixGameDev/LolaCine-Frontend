@@ -1,10 +1,13 @@
-
+import logo from "../assets/images/logo.png" 
 
 function LoadingScreen() {
   //App rendering
   return (
     <div className="container">
-        <h1>Loading...</h1>
+      <div className="loading-box">
+        <img src={logo} alt="Logo"></img>
+        <div className="loader"></div>
+      </div>
     </div>
   );
 }

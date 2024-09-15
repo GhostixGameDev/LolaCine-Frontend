@@ -158,6 +158,87 @@ button:active{
     width: 100%;
     height: 100%;
 }
+
+
+
+/*LOADING SCREEN*/
+.loading-box{
+    width: 40vw;
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loading-box img{
+    width: 100%;
+    height: 100%;
+}
+.loader {
+    border: 16px solid #eae287; 
+    border-top: 20px solid rgb(93,157,41); 
+    border-radius: 100%;
+    width: 10%;
+    height: 10.5%;
+    animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*ADMIN PANEL */
+.no-access{
+    font-family: "Roboto";
+    font-size: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+.admin-panel{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.admin-panel .panel-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.admin-panel button{
+    width: 15vw;
+    height: 5vh;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 100%;
+    margin-inline: 10px;
+}
+.proposal-list{
+    margin-top: 10px;
+    font-family: "Roboto";
+    font-weight: 300;
+}
+.proposal-list table, tr{
+    border: solid;
+    border-collapse: collapse;
+}
+.proposal-list table th{
+    border: solid 2px;
+    border-collapse: collapse;
+
+}
+.proposal-list .column-names{
+    font-weight: 600;
+}
+/*MEDIA QUERIES*/
+
 @media (max-width: 1075px){
     .login-form{
         width: 60vw;
