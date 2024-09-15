@@ -124,7 +124,6 @@ function App({group = 0}) {
         console.log(data.message);
         alert("Voto emitido con éxito.");
         // Refresh the data
-        fetchMovies(user);
         setHasVoted(true);
 
       }
