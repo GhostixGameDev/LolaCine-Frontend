@@ -5,20 +5,23 @@ import LoadingScreen from './Loading';
 import banner from '../assets/images/banner.webp';
 import googleIcon from "../assets/images/google.svg";
 import logo from "../assets/images/logo.png";
-
+//==============================================
+  //Functions
 function areCookiesEnabled() {
   document.cookie = "testcookie=1";
   const cookiesEnabled = document.cookie.indexOf("testcookie") !== -1;
   document.cookie = "testcookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
   return cookiesEnabled;
 }
-
-function App() {
+//=============================
+  //Component
+function App({group = 0}) {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
   const server = import.meta.env.VITE_BACKEND_URL;
+  //=======================================================
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
@@ -52,7 +55,8 @@ function App() {
     }
   };
 
-
+//============================================================================================
+  // Vote status refreshing
   const checkUserVoteStatus = async (currentUser) => {
     try {
       const token = await currentUser.getIdToken();
@@ -158,24 +162,33 @@ function App() {
             <img src={banner} alt="Banner" />
           </div>
           <div className="vote-grid">
-            {movies.map((movie) => (
-              // Automatically creates every movie frame
-              <div key={movie.ID} className="movie">
-                <div className="content">
-                  {movie.name}<br />
-                  {movie.votes} votes
-                </div>
-                <button onClick={() => handleVote(movie.ID)} disabled={hasVoted}>
-                  {hasVoted ? "Ya votaste" : "Votar"}
-                </button>
-              </div>
-            ))}
+            {movies.map((movie) => {
+              if(movie.group == group){
+                return(
+                  // Automatically creates every movie frame in this group (Defined in component props).
+                  <div key={movie.ID} className="movie">
+                  <div className="content">
+                    {movie.name}<br />
+                    <span className='school'>{movie.school}</span>
+                  </div>
+                  <button onClick={() => handleVote(movie.ID)} disabled={hasVoted}>
+                    {hasVoted ? "Ya votaste" : "Votar"}
+                  </button>
+                  </div>
+                )
+              }
+            })}
           </div>
         </div>
       )}
 
     </div>
   );
+}
+
+//Properties type validation
+App.propTypes = {
+  group: Number
 }
 
 export default App;

@@ -56,12 +56,18 @@ body{
 .movie .content{
     width: 30vw;
     height: 20vh;
-    border: solid 10px black;
+    color: rgb(26,64,0);
+    border: solid 10px rgb(93,157,41);
     text-align: center;
     align-content: center;
     font-family: "Roboto";
     font-size: 3vh;
     font-weight: 800;
+}
+.movie .content .school{
+    color: rgb(93,157,41);
+    font-size: calc(3vh - 0.5vh);
+    font-weight: 300;
 }
 button{
     background: rgba(93,157,41, 0.336);
